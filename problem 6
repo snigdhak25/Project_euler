@@ -1,0 +1,17 @@
+def sum_of_natural_numbers(n):
+    return (n * (n + 1)) // 2
+
+def sum_of_squares_of_natural_numbers(n):
+    return (n * (n + 1) * (2 * n + 1)) // 6
+
+def difference_sum_of_squares_square_of_sum(n):
+    sum_n = sum_of_natural_numbers(n)
+    sum_of_squares = sum_of_squares_of_natural_numbers(n)
+    square_of_sum = sum_n ** 2
+    difference = square_of_sum - sum_of_squares
+    return difference
+
+# For the first one hundred natural numbers (n = 100)
+n = 100
+difference = difference_sum_of_squares_square_of_sum(n)
+print("Difference between the sum of the squares and the square of the sum:", difference)
