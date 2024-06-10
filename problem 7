@@ -1,0 +1,27 @@
+def is_prime(num):
+    if num <= 1:
+        return False
+    if num <= 3:
+        return True
+    if num % 2 == 0 or num % 3 == 0:
+        return False
+    i = 5
+    while i * i <= num:
+        if num % i == 0 or num % (i + 2) == 0:
+            return False
+        i += 6
+    return True
+
+def nth_prime(n):
+    count = 1  # Count 2 as the first prime
+    num = 1
+    while count < n:
+        num += 2  # Check only odd numbers after 2
+        if is_prime(num):
+            count += 1
+    return num
+
+# Find the 10,001st prime number
+n = 10001
+prime = nth_prime(n)
+print("The", n, "st/nd/rd/th prime number is:", prime)
