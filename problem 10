@@ -1,0 +1,19 @@
+def sieve_of_eratosthenes(limit):
+    primes = [True] * (limit + 1)
+    primes[0] = primes[1] = False
+    p = 2
+    while p * p <= limit:
+        if primes[p]:
+            for i in range(p * p, limit + 1, p):
+                primes[i] = False
+        p += 1
+    return [i for i in range(2, limit + 1) if primes[i]]
+
+def sum_of_primes_below_n(n):
+    primes = sieve_of_eratosthenes(n - 1)
+    return sum(primes)
+
+# Find the sum of all primes below two million
+limit = 2000000
+sum_of_primes = sum_of_primes_below_n(limit)
+print("Sum of all primes below", limit, "is:", sum_of_primes)
