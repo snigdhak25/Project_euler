@@ -1,0 +1,15 @@
+def find_pythagorean_triplet():
+    for a in range(1, 1000):
+        for b in range(a + 1, 1000 - a):
+            c = 1000 - a - b
+            if a**2 + b**2 == c**2:
+                return a, b, c
+
+def product_of_triplet(triplet):
+    return triplet[0] * triplet[1] * triplet[2]
+
+# Find the Pythagorean triplet
+triplet = find_pythagorean_triplet()
+product = product_of_triplet(triplet)
+print("Pythagorean triplet:", triplet)
+print("Product of triplet (abc):", product)
