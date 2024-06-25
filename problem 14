@@ -1,0 +1,40 @@
+public class LongestCollatzSequence {
+
+    public static void main(String[] args) {
+        int limit = 1000000;
+        int maxLength = 0;
+        int startingNumber = 0;
+
+        // Arrays to store lengths of sequences already computed (memoization)
+        int[] sequenceLengths = new int[limit];
+        sequenceLengths[1] = 1; // Base case: sequence length of 1 is 1
+
+        // Calculate sequence lengths for all numbers up to limit
+        for (int i = 2; i < limit; i++) {
+            long n = i;
+            int length = 0;
+
+            // Compute the Collatz sequence starting from n
+            while (n >= i) {
+                length++;
+                if (n % 2 == 0) {
+                    n /= 2;
+                } else {
+                    n = 3 * n + 1;
+                }
+            }
+
+            // Add the already known sequence length of n to current length
+            sequenceLengths[i] = length + sequenceLengths[(int) n];
+
+            // Update maximum length and starting number if found a longer sequence
+            if (sequenceLengths[i] > maxLength) {
+                maxLength = sequenceLengths[i];
+                startingNumber = i;
+            }
+        }
+
+        System.out.println("Starting number under " + limit + " producing the longest Collatz sequence: " + startingNumber);
+        System.out.println("Length of the sequence: " + maxLength);
+    }
+}
