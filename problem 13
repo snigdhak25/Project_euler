@@ -1,0 +1,28 @@
+import java.math.BigInteger;
+
+public class LargeSum {
+
+    public static void main(String[] args) {
+        String[] numbers = {
+            "37107287533902102798797998220837590246510135740250",
+            "46376937677490009712648124896970078050417018260538",
+            "74324986199524741059474233309513058123726617309629",
+            // Add all 100 numbers here...
+            "53503534226472524250874054075591789781264330331690"
+        };
+
+        BigInteger sum = BigInteger.ZERO;
+
+        // Calculate the sum of all numbers
+        for (String number : numbers) {
+            BigInteger num = new BigInteger(number);
+            sum = sum.add(num);
+        }
+
+        // Convert sum to string and extract first ten digits
+        String sumString = sum.toString();
+        String firstTenDigits = sumString.substring(0, 10);
+
+        System.out.println("The first ten digits of the sum are: " + firstTenDigits);
+    }
+}
